@@ -24,9 +24,9 @@ After you create this yaml file you are able to use this like this
   $ kubectl irsa --config config.yaml --sa application-service-account --namespace development
 ```
 
-## Example outputs;
+## Usage
 
-<img src="./img/image.png"></img>
+<img src="./img/main.gif"></img>
 
 ## Flags
 
