@@ -21,7 +21,7 @@ actions:
 After you create this yaml file you are able to use this like this
 
 ```sh
-    kubectl irsa --config config.yaml --role arn:aws:iam::ACCOUNT_ID:role/dynamodb-table-user-role
+  $ kubectl irsa --config config.yaml --role arn:aws:iam::ACCOUNT_ID:role/dynamodb-table-user-role
 ```
 
 ## Example outputs;
