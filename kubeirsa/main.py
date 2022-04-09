@@ -1,5 +1,7 @@
 from kubeirsa.iam import IAMPolicySimulator
 from kubeirsa.config import Config
+from kubeirsa.serviceaccount import Kubernetes
+
 import argparse
 import logging
 import sys
@@ -15,11 +17,18 @@ def argParser():
         default="config.yaml")
 
     parser.add_argument(
-        "--role",
+        "--sa",
         action='store',
         type=str,
         help="IAM role name",
         required=True)
+
+    parser.add_argument(
+        "--namespace",
+        action='store',
+        type=str,
+        help="IAM role name",
+        default="default")
 
     return parser.parse_args()
 
@@ -27,14 +36,19 @@ def main():
     args = argParser()
     configObj = Config()
     iamObj = IAMPolicySimulator()
+    k8s = Kubernetes()
 
     configFile = args.config
-    role = args.role
+    sa = args.sa
+    namespace = args.namespace
+
     configData = configObj.parseConfig(configFile)
     configDataCheck = configObj.configCheck(configData)
 
+    roleName = k8s.parseSA(name=sa, namespace=namespace)
+
     if configDataCheck == True:
-        iamObj.simulateCaps(config=configData, role=role)
+        iamObj.simulateCaps(config=configData, role=roleName)
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)
