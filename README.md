@@ -1,22 +1,54 @@
-# kubeirsa
-This is a sample project that allows us to test IAM IRSA policy capabilities.
+# kubectl-irsa
 
-## Example Usage; 
+This kubectl plugin allows us to test abilities of IAM policies which is assigned to the serviceAccount roles via AWS IAM Policy simulator service.
 
-* Functional Test with local-stack.
+## How to use ?
 
-<code>
-kubectl irsa --policy-file policy.json --type  functional
-</code>
+First step you have to create a simple resource and action map YAML file like this;
 
-* Integration Test with AWS API
+This yaml file contains resource list and related actions which would be possibly using by the serviceaccounts roles.
 
-<code>
-kubectl irsa --policy-file policy.json --type integration --service-account application-service-account
-</code>
+<b>Notice:</b> Each action simulates by the client on individual resources
 
-Expected output is ;
+```yaml
+resources:
+  - arn:aws:s3:::my-org-cdn-bucket
+actions:
+  - s3:DeleteBucket
 
-aws sts results : OK :green-mark: or FALSE :danger: 
-ERROR check the Identity
+```
 
+After you create this yaml file you are able to use this like this
+
+```sh
+    kubectl irsa --config config.yaml --role arn:aws:iam::ACCOUNT_ID:role/dynamodb-table-user-role
+```
+
+## Example outputs;
+
+<img src="./img/image.png"></img>
+
+## Flags
+
+| flag | Description |
+| --- | ----------- |
+| role | Name of the role which assumed by service account which is assigned into the annotations of `eks.amazonaws.com/role-arn`  |
+| config | Resource map configuration file |
+
+## Setup 
+
+This is a simple pip3 package so if you want to install this plugin on your cluster you just need to run this command like this;
+
+```sh
+    git clone git@github.com:WoodProgrammer/kubectl-irsa.git
+
+    pip3 install . --upgrade
+```
+
+## Respect To 
+
+### Bir Gün Sabah Sabah-Bir Turgut Uyar
+
+<br>
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/BuaDTTH4718/0.jpg)](https://www.youtube.com/watch?v=BuaDTTH4718)
