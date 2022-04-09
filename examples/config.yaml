@@ -1,0 +1,8 @@
+resources:
+  - arn:aws:s3:::my-org-cdn-bucket
+  - arn:aws:s3:::my-org-config-bucket
+  - arn:aws:s3:::my-org-backup-bucket
+  - arn:aws:s3:::my-org-replication-bucket
+actions:
+  - s3:PutObjectAcl
+  - s3:DeleteBucket

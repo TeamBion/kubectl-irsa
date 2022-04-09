@@ -1,0 +1,4 @@
+resources:
+  - arn:aws:dynamodb:angara:ACCOUNT_ID:table/my-table
+actions:
+  - dynamodb:GetItem
