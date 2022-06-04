@@ -23,15 +23,16 @@ class IAMPolicySimulator(object):
     def simulateCaps(self, config, role):
         
         responseList = []
-        
-        for resource in config["resources"]:
 
-            response = self.iam_client.simulate_principal_policy(
-                PolicySourceArn = role,
-                ActionNames = config["actions"],
-                ResourceArns = [resource]
-            )
+        for action in config["actions"]:  
+            for resource in config["resources"]:
+                response = self.iam_client.simulate_principal_policy(
+                    PolicySourceArn = role,
+                    ActionNames = [action],
+                    ResourceArns = [resource]
+                )
             
             responseList.append(response)
+            
         
         self.generateOutput(responseList)
