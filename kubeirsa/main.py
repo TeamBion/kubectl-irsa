@@ -1,3 +1,4 @@
+from kubeirsa.eks import EKS
 from kubeirsa.iam import IAMPolicySimulator
 from kubeirsa.config import Config
 from kubeirsa.serviceaccount import Kubernetes
@@ -36,6 +37,7 @@ def main():
     args = argParser()
     configObj = Config()
     iamObj = IAMPolicySimulator()
+    eksObj = EKS()
     k8s = Kubernetes()
 
     configFile = args.config
@@ -49,6 +51,7 @@ def main():
 
     if configDataCheck == True:
         iamObj.simulateCaps(config=configData, role=roleName)
+        eksObj.checkOIDC(config=configData)
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)
