@@ -1,5 +1,5 @@
 from kubeirsa.eks import EKS
-from kubeirsa.iam import IAMPolicySimulator
+from kubeirsa.iam import IAMPolicySimulator IAM
 from kubeirsa.config import Config
 from kubeirsa.serviceaccount import Kubernetes
 
@@ -51,7 +51,7 @@ def main():
 
     if configDataCheck == True:
         iamObj.simulateCaps(config=configData, role=roleName)
-        eksObj.checkOIDC(config=configData)
+        iamObj.checkOIDC(config=configData)
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)

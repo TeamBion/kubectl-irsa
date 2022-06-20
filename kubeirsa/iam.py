@@ -1,4 +1,37 @@
 import boto3
+from eks import EKS
+
+class IAM(object):
+
+    def __init__(self):
+        self.iam_client = boto3.client("iam")
+        sts_client = boto3.client("sts")
+        
+        self.accountId = sts_client.get_caller_identity()["Account"]
+
+
+    def checkOIDC(self, config):
+        clusterName = config["clusterName"]
+
+        eksObj = EKS()
+
+        oidcId = eksObj.oidcIssuerId(clusterName)
+        
+        openIdProviders = self.iam_client.list_open_id_connect_providers()
+        for openIdProvider in openIdProviders["OpenIDConnectProviderList"]:
+            if openIdProvider["Arn"] == "arn:aws:iam::{}:oidc-provider/{}".format(self.accountId, oidcId):
+                status = 1
+                break
+            else:
+                status = 0
+
+        if status == 1:
+            decisionEmoji = "\U00002705"
+        else:
+            decisionEmoji = "\U0000274c"
+        
+        print("OIDC provider connectivity between IAM and EKS is :: {}".format(decisionEmoji ))
+
 
 class IAMPolicySimulator(object):
 
