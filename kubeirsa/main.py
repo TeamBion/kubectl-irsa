@@ -36,7 +36,8 @@ def argParser():
 def main():
     args = argParser()
     configObj = Config()
-    iamObj = IAMPolicySimulator()
+    iamPolicyObj = IAMPolicySimulator()
+    iamObj = IAM()
     eksObj = EKS()
     k8s = Kubernetes()
 
@@ -50,8 +51,9 @@ def main():
     roleName = k8s.parseSA(name=sa, namespace=namespace)
 
     if configDataCheck == True:
-        iamObj.simulateCaps(config=configData, role=roleName)
+        iamPolicyObj.simulateCaps(config=configData, role=roleName)
         iamObj.checkOIDC(config=configData)
+        iamObj.checkTrustPolicy()
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)
