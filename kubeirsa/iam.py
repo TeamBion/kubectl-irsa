@@ -10,12 +10,11 @@ class IAM(object):
         
         self.accountId = sts_client.get_caller_identity()["Account"]
 
-    def checkTrustPolicy(self, roleName):
+    def checkTrustPolicy(self, roleName, serviceAccount, nameSpace):
         data = self.iam_client.get_role(RoleName= roleName)
         
         statements = data["Role"]["AssumeRolePolicyDocument"]
         federatedUrl = "arn:aws:iam::{}:oidc-provider/{}".format(self.accountId, self.oidcId)
-        print(federatedUrl)
 
         for statement in statements["Statement"]:
             try:            
