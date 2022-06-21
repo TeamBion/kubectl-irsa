@@ -1,5 +1,5 @@
 import boto3
-from eks import EKS
+from kubeirsa.eks import EKS
 
 class IAM(object):
 
@@ -102,8 +102,3 @@ class IAMPolicySimulator(object):
             
         
         self.generateOutput(responseList)
-
-
-obj = IAM()
-obj.checkOIDC({"clusterName": "test-cluster"})
-obj.checkTrustPolicy("ack-s3-controller")

@@ -1,3 +1,4 @@
+clusterName: test-cluster
 resources:
   - arn:aws:dynamodb:REGION_NAME:AACOUNT_ID:table/TABLE_NAME
 actions:
