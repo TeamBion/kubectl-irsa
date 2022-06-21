@@ -53,7 +53,7 @@ def main():
     if configDataCheck == True:
         iamPolicyObj.simulateCaps(config=configData, role=roleName)
         iamObj.checkOIDC(config=configData)
-        iamObj.checkTrustPolicy()
+        iamObj.checkTrustPolicy(roleName = roleName)
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)

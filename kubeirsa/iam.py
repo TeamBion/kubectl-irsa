@@ -10,7 +10,7 @@ class IAM(object):
         
         self.accountId = sts_client.get_caller_identity()["Account"]
 
-    def checkTrustPolicy(self, roleName, serviceAccount, nameSpace):
+    def checkTrustPolicy(self, roleName):
         data = self.iam_client.get_role(RoleName= roleName)
         
         statements = data["Role"]["AssumeRolePolicyDocument"]
