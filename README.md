@@ -1,6 +1,15 @@
 # kubectl-irsa
 
 This kubectl plugin allows us to test abilities of IAM policies which is assigned to the serviceAccount roles via AWS IAM Policy simulator service.
+Beside of the IAM Policy Simulator it checks the other essential parts like this;
+
+* OIDC linking issues like non existing IdentityProvider or wrong audience .. etc 🟢
+* Principal Checks 🟢
+* WebIdentity Issue 🟢
+* Policy Simulator 🟢
+
+* Thumbprint Check 🟠
+* AdmissionController Check 🟠 
 
 ## How to use ?
 
@@ -34,6 +43,7 @@ After you create this yaml file you are able to use this like this
 | --- | ----------- |
 | role | Name of the role which assumed by service account which is assigned into the annotations of `eks.amazonaws.com/role-arn`  |
 | config | Resource map configuration file |
+| clusterName | Name of the target cluster to check the OIDC related configurations|
 
 ## Setup 
 
