@@ -1,6 +1,5 @@
 clusterName: test-cluster
 resources:
-  - arn:aws:dynamodb:REGION_NAME:AACOUNT_ID:table/TABLE_NAME
+  - arn:aws:sqs:eu-central-1:ACC_ID:ROLE_NAME
 actions:
-  - dynamodb:DeleteTable
-  - dynamodb:GetItem
+  - s3:GetObject
