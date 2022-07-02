@@ -1,6 +1,6 @@
 from kubeirsa.iam import IAMPolicySimulator, IAM
 from kubeirsa.config import Config
-from kubeirsa.kubernetes import Kubernetes
+from kubeirsa.k8s import Kubernetes
 
 import argparse
 import logging
