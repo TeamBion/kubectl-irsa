@@ -1,6 +1,6 @@
 from kubeirsa.iam import IAMPolicySimulator, IAM
 from kubeirsa.config import Config
-from kubeirsa.serviceaccount import Kubernetes
+from kubeirsa.k8s import Kubernetes
 
 import argparse
 import logging
@@ -54,6 +54,7 @@ def main():
         roleStr = roleName.split(':', 5)
         roleStr = roleStr[5].replace("role/", "")
         iamObj.checkTrustPolicy(roleName = roleStr)
+        k8s.checkAdmissionWebhook()
     else:
         logging.error("Check the configuration please :))")
         sys.exit(1)

@@ -26,7 +26,7 @@ class IAM(object):
                     print("Check role principals {}".format(decisionEmoji))
             except KeyError as exp:
                 decisionEmoji = "\U0000274c"
-                print("Missing {} data that returned from aws missing key {} :: {}".format(type(exp).__name__, exp, decisionEmoji))
+                print("Check role principal federation {} :: {}".format(type(exp).__name__, decisionEmoji))
             except Exception as exp:
                 print("Another error occured")
 

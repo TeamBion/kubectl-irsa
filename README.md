@@ -7,9 +7,10 @@ Beside of the IAM Policy Simulator it checks the other essential parts like this
 * Principal Checks 🟢
 * WebIdentity Issue 🟢
 * Policy Simulator 🟢
+* AdmissionController Check 🟢
 
 * Thumbprint Check 🟠
-* AdmissionController Check 🟠 
+
 
 ## How to use ?
 
