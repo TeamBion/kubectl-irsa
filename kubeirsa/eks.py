@@ -5,7 +5,7 @@ class EKS(object):
 
     def __init__(self):
         self.eks_client = boto3.client("eks")
-
+    
     def oidcIssuerId(self, clusterName):
         cluster = self.eks_client.describe_cluster( name=clusterName)
         try:
