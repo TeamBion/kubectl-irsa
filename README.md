@@ -37,7 +37,7 @@ After you create this yaml file you are able to use this like this
 
 <img src="./img/main.gif"></img>
 
-## Flags
+## ConfigurationDetails
 
 | flag | Description |
 | --- | ----------- |
