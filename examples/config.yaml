@@ -1,5 +1,6 @@
-clusterName: test-cluster
 resources:
-  - arn:aws:sqs:eu-central-1:ACC_ID:ROLE_NAME
+  - arn:aws:s3:::bucket-name-first
+  - arn:aws:s3:::bucket-name-second
 actions:
   - s3:GetObject
+  - s3:PutObject
