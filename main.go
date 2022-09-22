@@ -67,4 +67,7 @@ func main() {
 
 		}
 	}
+
+	compareAssumeRolePolicy(roleName)
+
 }

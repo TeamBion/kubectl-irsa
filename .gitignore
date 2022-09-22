@@ -13,6 +13,8 @@
 *.dylib
 *go.mod
 *go.sum
+*test*
+*jason*
 # Test binary, built with `go test -c`
 *.test
 *kubectl-irsa*
