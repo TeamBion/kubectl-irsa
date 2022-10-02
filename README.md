@@ -51,12 +51,3 @@ This is a simple pip3 package so if you want to install this plugin on your clus
     go build ./
     mv kubectl-irsa $PATH:/usr/local/bin
 ```
-
-
-## Respect To 
-
-### Bir Gün Sabah Sabah-Bir Turgut Uyar
-
-<br>
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/BuaDTTH4718/0.jpg)](https://www.youtube.com/watch?v=BuaDTTH4718)
