@@ -1,0 +1,6 @@
+676f1ade2581c99971d0050b1a73fac0:kubectl-irsa-0.1-linux-arm64
+33ec1287574c0a07e258538b49a02861:kubectl-irsa-0.1-linux-arm
+04e5d8a5bf63a4f0337133f9f27405a1:kubectl-irsa-0.1-linux-amd64
+feeb5da7becec363fe11296436a66c10:kubectl-irsa-0.1-darwin-amd64
+d2aceac83b21bf38ea5280beeab5b23b:kubectl-irsa-0.1-darwin-arm64
+ac89a0bdf9d9f6c9a32ed74d6ef7e335:kubectl-irsa-0.1-windows-amd64
