@@ -51,3 +51,12 @@ This is a simple pip3 package so if you want to install this plugin on your clus
     go build ./
     mv kubectl-irsa $PATH:/usr/local/bin
 ```
+
+### Download
+You can download plugin artifact over there;
+
+https://github.com/TeamBion/kubectl-irsa/releases
+
+# Contribution
+
+More than welcome! please don't hesitate to open bugs, questions, pull requests
