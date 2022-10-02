@@ -4,11 +4,10 @@ This kubectl plugin allows us to test abilities of IAM policies which is assigne
 Beside of the IAM Policy Simulator it checks the other essential parts like this;
 
 * Policy Simulator 🟢
+* WebIdentity Issue 🟢
+* Principal Checks 🟢
 * OIDC linking issues like non existing IdentityProvider or wrong audience .. etc 🟠
-* Principal Checks 🟠
-* WebIdentity Issue 🟠
 * AdmissionController Check 🟠
-
 * Thumbprint Check 🟠
 
 
@@ -48,12 +47,15 @@ After you create this yaml file you are able to use this like this
 
 ## Setup 
 
+### From Source;
+
 This is a simple pip3 package so if you want to install this plugin on your cluster you just need to run this command like this;
 
 ```sh
     go build ./
     mv kubectl-irsa $PATH:/usr/local/bin
 ```
+
 
 ## Respect To 
 
