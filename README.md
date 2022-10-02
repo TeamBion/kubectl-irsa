@@ -30,12 +30,8 @@ actions:
 After you create this yaml file you are able to use this like this
 
 ```sh
-  $ kubectl irsa --config config.yaml --sa application-service-account --namespace development
+  $ kubectl irsa -file config.yaml -sa application-service-account -namespace development
 ```
-
-## Usage
-
-<img src="./img/main.gif"></img>
 
 ## ConfigurationDetails
 
