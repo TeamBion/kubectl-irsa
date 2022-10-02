@@ -3,4 +3,4 @@ kind: ServiceAccount
 metadata:
   name: sample-app-sa
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::ACCOUNT_ID:role/role_name
+    eks.amazonaws.com/role-arn: arn:aws:iam::ACC_ID:role/ack-s3-controller

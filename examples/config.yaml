@@ -1,6 +1,6 @@
 resources:
-  - arn:aws:s3:::bucket-name-first
-  - arn:aws:s3:::bucket-name-second
+  - arn:aws:s3:::bucket-one
+  - arn:aws:s3:::bucket-two
 actions:
   - s3:GetObject
   - s3:PutObject

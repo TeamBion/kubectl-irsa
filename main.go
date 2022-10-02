@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
@@ -59,15 +60,20 @@ func main() {
 			actionName := result.EvalActionName
 			decisionName := result.EvalDecision
 
-			if decisionName == "allowed" {
-				fmt.Println("\U00002705 ", *actionName)
-			} else {
-				fmt.Println("\U0000274c ", *actionName)
-			}
+			resource := result.ResourceSpecificResults
 
+			for _, rs := range resource {
+				if decisionName == "allowed" {
+					fmt.Println("\U00002705 ", *actionName, *rs.EvalResourceName)
+				} else {
+					fmt.Println("\U0000274c ", *actionName, *rs.EvalResourceName)
+				}
+
+			}
 		}
 	}
+	splittedRole := strings.Split(roleName, "/")
 
-	compareAssumeRolePolicy(roleName)
+	compareAssumeRolePolicy(splittedRole[1], *serviceAccount, *namespace)
 
 }

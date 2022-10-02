@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"path/filepath"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
@@ -18,6 +19,7 @@ type AssumeRolePolicy struct {
 
 type Condition struct {
 	StringEquals map[string]interface{}
+	StringLike   map[string]interface{}
 }
 
 type Statement struct {
@@ -34,7 +36,7 @@ type Results struct {
 	Statement []Statement
 }
 
-func checkAssumeRolePolicy(assumeRolePolicy string) {
+func checkAssumeRolePolicy(assumeRolePolicy string, serviceAccount string, namespace string) {
 
 	jsonResponse := []byte(assumeRolePolicy)
 
@@ -43,16 +45,35 @@ func checkAssumeRolePolicy(assumeRolePolicy string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	hede := res.Statement[0].Condition.StringEquals
 
-	for key, val := range hede {
-		fmt.Println(key)
-		fmt.Println(val)
+	strictString := res.Statement[0].Condition.StringEquals
+	nonstrictString := res.Statement[0].Condition.StringLike
+	fullSa := fmt.Sprintf("system:serviceaccount:%s:%s", namespace, serviceAccount)
+
+	if strictString != nil {
+		for _, val := range strictString {
+			//fmt.Println(key)
+			fmt.Println(val)
+		}
+	} else {
+
+		for _, val := range nonstrictString {
+
+			fmt.Println(val)
+			matched, _ := filepath.Match(val.(string), fullSa)
+
+			if matched == true {
+				fmt.Println("\U00002705 Service Account Regex Matched")
+			} else {
+				fmt.Println("\U0000274c Service Account Regex did not match")
+
+			}
+		}
 	}
 
 }
 
-func compareAssumeRolePolicy(roleName string) {
+func compareAssumeRolePolicy(roleName string, serviceAccount string, namespace string) {
 	cfg, err := config.LoadDefaultConfig(context.TODO())
 
 	if err != nil {
@@ -71,6 +92,6 @@ func compareAssumeRolePolicy(roleName string) {
 		panic(err)
 	} else {
 		result, _ := url.PathUnescape(*roleOutput.Role.AssumeRolePolicyDocument)
-		checkAssumeRolePolicy(result)
+		checkAssumeRolePolicy(result, serviceAccount, namespace)
 	}
 }
