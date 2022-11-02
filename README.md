@@ -32,6 +32,12 @@ After you create this yaml file you are able to use this like this
 ```sh
   $ kubectl irsa -file config.yaml -sa application-service-account -namespace development
 ```
+:warning: <b> Important </b>
+
+Based on the latest Kubernetes version changes especially on AWS EKS, you may face issues with authentication API versions that's why you have to upgrade your AWS CLI V2 version while authenticating via IAM to connect the cluster.
+
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">How to upgrade awscli version</a>
+
 
 ## ConfigurationDetails
 
